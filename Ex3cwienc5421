@@ -1,0 +1,100 @@
+/*************************************
+* Programmer: Craig Wiencek
+* classID: cwienc5421
+* Exercise 3
+* CIS 2600: Business Application Programming
+* Fall 2016
+* Due date: 10/14/16
+* Date completed: 10/12/16
+**************************************
+The purpose of this application is for the user to utilize the command line to 
+* enter their weekly sales amount and allow the application to calculate various
+* levels of commission dependant on their sales figure.
+
+*/
+package ex3cwienc5421;
+
+/*Here is where I imported the java utility scanner well before the user is 
+prompted to enter any information*/
+
+import java.util.Scanner;
+ 
+
+/*My publc class named EX3cwienc5421, public class = available access for all*/
+public class EX3cwienc5421 {
+
+    /**
+     * @param args the command line arguments
+     */
+    
+ /*My public main where all of my coding is located, declared as static so no
+    objects are required for the application to run and declared void because
+    it returns no values*/
+    public static void main(String[] args) {
+        /*here I declare the java.util.scanner as Scanner inputDevice. Necessary 
+        for when the user inputs their data*/
+Scanner inputDevice=new Scanner(System.in);
+
+/*Declaration of all my vairables, notice all of them doubles but weeklySales is
+the only one not a constant because the value of weeklySales is dependant on the
+user. Each sales amount and commission rate is set to a constant because commission
+rates don't change and there are absolute sales figures employees have to
+reach in order to achieve specific commission rates
+*/
+ double weeklySales = 0; 
+ final double MED_WK_SALES=3000; 
+ final double MED_COMM_RATE=.10;
+ final double HI_WK_SALES=5000;
+ final double HI_COMM_RATE=.20;
+ 
+ /*Here is the prompt for the user to enter their weekly sales amount using the
+ print method. The value they enter is slated to be weeklySales as it is set to be
+ inputDevice.nextDevice().
+ */
+System.out.print("Please enter your weekly sales amount >> ");
+    weeklySales = inputDevice.nextDouble();
+
+    
+/*first if statement stating if weeklySales is less than the sales figure required 
+    to enter tier one commision these lines of code will run using print line 
+    method.
+    */
+ if(weeklySales<MED_WK_SALES){
+    System.out.println("Your pay overview is as follows...");
+    System.out.println("Weekly Sales: " + weeklySales);
+    System.out.println("Weekly Commission: $0");
+
+ }
+ /*But if the employee does achieves the weeklySales figure required to enter 
+ tier one commission this else statement will run. The if statement nested in the
+ else states as long as weeklySales is less than the figure required to achieve
+tier two commission rate the employee will obtain this commission rate
+ and these lines of code will run...
+ */
+ else
+         { if(weeklySales<HI_WK_SALES){
+             
+    System.out.println("Your pay overview is as follows...");
+    System.out.println("Weekly Sales: $" + weeklySales);
+    System.out.println("Weekly Commission: $" + (weeklySales*MED_COMM_RATE));   
+    
+         }
+         /*Otherwise the employee must have enter a value greater than or equal 
+to the sales figure required to achieve tier two commission, in which NetBeans will
+skip over all prior code and output the if statement nested in this else.         
+         */
+         else
+             if(weeklySales>=HI_WK_SALES)
+             {
+    System.out.println("Your pay overview is as follows...");
+    System.out.println("Weekly Sales: $" + weeklySales);
+    System.out.println("Weekly Commission: $" + (weeklySales*HI_COMM_RATE));   
+             }
+         
+         
+         }
+
+        
+    }
+    
+}
